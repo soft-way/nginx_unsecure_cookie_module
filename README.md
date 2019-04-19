@@ -1,9 +1,9 @@
-The Nginx module for adding cookie flag
+The Nginx module for removing "Secure" cookie flag
 ==========
 
 [![License](http://img.shields.io/badge/license-BSD-brightgreen.svg)](https://github.com/Airis777/nginx_cookie_flag_module/blob/master/LICENSE)
 
-The Nginx module for adding cookie flag
+The Nginx module for removing "Secure" cookie flag
 
 ## Dependencies
 * [nginx](http://nginx.org)
@@ -18,13 +18,13 @@ Earlier versions is not tested.
 1. Clone the git repository.
 
   ```
-  git clone git://github.com:AirisX/nginx_cookie_flag_module.git
+  git clone git@github.com:yumauri/nginx_unsecure_cookie_module.git
   ```
 
 2. Add the module to the build configuration by adding
-  `--add-module=/path/to/nginx_cookie_flag_module`
+  `--add-module=/path/to/nginx_unsecure_cookie_module`
    or
-  `--add-dynamic-module=/path/to/nginx_cookie_flag_module`
+  `--add-dynamic-module=/path/to/nginx_unsecure_cookie_module`
 
 3. Build the nginx binary.
 
@@ -34,29 +34,32 @@ Earlier versions is not tested.
 
 ```Nginx
 location / {
-    set_cookie_flag Secret HttpOnly secure SameSite;
-    set_cookie_flag * HttpOnly;
-    set_cookie_flag SessionID SameSite=Lax secure;
-    set_cookie_flag SiteToken SameSite=Strict;
+    unsecure_cookie Secret;
+    unsecure_cookie *;
+    unsecure_cookie SessionID;
+    unsecure_cookie SiteToken;
 }
 ```
 
 ## Description
-This module for Nginx allows to set the flags "**HttpOnly**", "**secure**" and "**SameSite**" for cookies in the "*Set-Cookie*" upstream response headers.
-The register of letters for the flags doesn't matter as it will be converted to the correct value. The order of cookie declaration among multiple directives doesn't matter too.
-It is possible to set a default value using symbol "*". In this case flags will be added to the all cookies if no other value for them is overriden.
+This module for Nginx removes flag "**Secure**" from cookies in the "*Set-Cookie*" upstream response headers.
+It is possible to set a default value using symbol "*". In this case "Secure" flag will be removed from all cookies.
 
 ## Directives
 
-### set_cookie_flag
+### unsecure_cookie
 
 -| -
 --- | ---
-**Syntax**  | **set_cookie_flag** \<cookie_name\|*\> [HttpOnly] [secure] [SameSite\|SameSite=[Lax\|Strict]];
+**Syntax**  | **unsecure_cookie** \<cookie_name\|*\>;
 **Default** | -
 **Context** | server, location
 
-Description: Add flag to desired cookie.
+Description: Removes "Secure" flag from desired cookie.
 
 ## Author
+
+Author of original module [nginx_cookie_flag_module](https://github.com/AirisX/nginx_cookie_flag_module) is<br>
 Anton Saraykin [<Airisenator@gmail.com>]
+
+I just put my dirty hands on his code :)
