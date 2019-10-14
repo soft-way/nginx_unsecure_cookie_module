@@ -57,6 +57,11 @@ It is possible to set a default value using symbol "*". In this case "Secure" fl
 
 Description: Removes "Secure" flag from desired cookie.
 
+## Docker
+
+If you want to have Docker image with this module, you can take [this snippet](https://gist.github.com/yumauri/2c93e727ee15f32529da351b030e1190) as starting point.<br>
+Or, take [this Docker image](https://hub.docker.com/r/boly38/unginx), made by [Brice Vandeputte](https://github.com/boly38), at your own risk.
+
 ## Author
 
 Author of original module [nginx_cookie_flag_module](https://github.com/AirisX/nginx_cookie_flag_module) is<br>
