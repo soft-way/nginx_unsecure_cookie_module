@@ -62,6 +62,12 @@ Description: Removes "Secure" flag from desired cookie.
 If you want to have Docker image with this module, you can take [this snippet](https://gist.github.com/yumauri/2c93e727ee15f32529da351b030e1190) as starting point.<br>
 Or, take [this Docker image](https://hub.docker.com/r/boly38/unginx), made by [Brice Vandeputte](https://github.com/boly38), at your own risk.
 
+Build as dynamic module with nginx open source Dockerfile in https://github.com/soft-way/docker-nginx based on https://github.com/nginxinc/docker-nginx
+Steps:
+1. git clone https://github.com/soft-way/docker-nginx 
+2. cd docker-nginx mainline/alpine
+3. docker build -t nginx:1.21.6-alpine-dev .
+
 ## Author
 
 Author of original module [nginx_cookie_flag_module](https://github.com/AirisX/nginx_cookie_flag_module) is<br>
